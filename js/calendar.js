@@ -249,7 +249,7 @@ function resize(){
 
       this.$calendarDate_item.height(this.$calendarDate_item.width());
       this.$calendarDate_item.css('line-height',this.$calendarDate_item.height()+'px');
-      console.log("1");
+ 
       this.showCalendar();
 
       if (this.opts.ifSwitch) {
