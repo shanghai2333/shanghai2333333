@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Document</title>
+	<title>我的日历</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/calendar.css">
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
@@ -13,46 +13,48 @@
 	<div id="calendar" class="calendar"></div>
 	<div id="schedule" class="schedule">
 
-		<div id="list"></div>
 		<div id="event-modal" class="event-modal">
 			<div class="event-modal-content">
-				<div class="event-modal-title">
-				</div>
+				<div class="event-modal-title"></div>
 				<div class="event-modal-info">
-					<div class="event-modal-date">8月17日</div>
-					<div class="event-modal-time">
-						<span class="event-modal-starttime">9:00</span>
-						-
-						<span class="event-modal-endtime">11:04</span>
-					</div>
-					<div class="event-modal-place">风味餐厅</div>
-				</div>
-				<div class="event-modal-desc">喵喵喵喵喵喵喵喵喵</div>
+					<div class="event-modal-date"></div>
+					<div class="event-modal-starttime"></div>
+					<div class="event-modal-endtime"></div>
+					<div class="event-modal-spot"></div>
+					<div class="event-modal-state"></div>
+				</div><br>
+				<div class="event-modal-detail"></div>
+				<div class="event-modal-moral"></div>
+				<div class="event-modal-hold"></div>
 			</div>
 			<div class="modal-footer center">
 				<a class="event-finished btn-flat">已完成</a>
+				<a class="cancel btn-flat">取消</a>
 			</div>
+
 		</div>
-		
-		<!--
-		<a class="schedule-line" >
+
+		<div id="list">
+		<a class="schedule-line hide">
 			<div class="schedule-desc left">
 				<div class="schedule-first-colm left">
-					<div class="schedule-start-time">9:00</div>
-					<div class="schedule-end-time">11:45</div>
+					<div class="schedule-start-time"></div>
+					<div class="schedule-end-time"></div>
 				</div>
-				<div class="schedule-second-colm left">三笙有幸</div>
+				<div class="title233 schedule-second-colm left"></div>
 			</div>
-			<div class="schedule-cls right">
+			<div class="delete233 schedule-cls right">
 				<span class="icon-cross"></span>
 			</div>
 		</a>
-		-->
+		</div>
+		<div id="list1"></div>
 	</div>
 	<div class="event-modal-overlay"></div>
 	<script src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script src="js/calendar.js"></script>
 	<script src="js/list.js"></script>
+
 </body>
 </html>

@@ -1,64 +1,5 @@
 // 关于月份： 在设置时要-1，使用时要+1
 $(function () {
-  // $('.event-modal').modal();
-  $('.schedule-line').click(function(){
-    $(".event-modal-overlay").css({
-      "z-index" : "1002",
-      "display" : "block",
-      "opacity" : "0.5"
-    })
-    $('.event-modal').css({
-      "z-index" : "1003",
-      "display" : "block",
-      "opacity" : "1",
-      "transform" : "scaleX(1)",
-      "top" : "10%"
-    })
-  })
-  $('.event-modal-overlay').click(function(){
-    $(this).css({
-      "z-index" : "999",
-      "display" : "none",
-      "opacity" : "1"
-    })
-    $('.event-modal').css({
-      "display" : "none",
-      "opacity" : "0",
-      "transform" : "scaleX(0.7)",
-      "top" : "80%"
-    })
-  })
-  $('.event-finished').click(function(){
-    $('.event-modal-overlay').css({
-      "z-index" : "999",
-      "display" : "none",
-      "opacity" : "1"
-    })
-    $('.event-modal').css({
-      "display" : "none",
-      "opacity" : "0",
-      "transform" : "scaleX(0.7)",
-      "top" : "80%"
-    })
-  })
-  $('.schedule-cls').click(function(e){
-    e.stopPropagation();
-
-    var $deleteEvent = $(this).parent();
-    var $deleteEventNextAll = $deleteEvent.nextAll();
-    $deleteEvent.addClass('zoom-out-right');
-    setTimeout(function(){
-      $deleteEventNextAll.addClass('list-up');
-    },1000);
-    setTimeout(function(){
-      $deleteEvent.remove();
-    },1500);
-    $(".schedule-line").removeClass('list-up');
-    console.log($deleteEventNextAllNum);
-    // ------------------------------------------
-    //     这需要从数据库中删除日程，并重新加载数据库中存在的日程
-    // ------------------------------------------
-  })
   
   $('#calendar').calendar({
     ifSwitch: true, // 是否切换月份
@@ -66,6 +7,10 @@ $(function () {
     backToday: true // 是否返回当天
   });
   resize();
+  window.onresize = function(){
+    resize();
+  }
+
 });
 
 function resize(){
@@ -77,6 +22,8 @@ function resize(){
   var calendarH = $(".calendar").height();
   var scheduleH = winH - calendarH;
   $("#schedule").height(scheduleH);
+$(".calendar-date .item").height($(".calendar-date .item").width());
+  $(".calendar-date .item").css("line-height",$(".calendar-date .item").height()+'px');
 
 }
 ;(function ($, window, document, undefined) {

@@ -14,7 +14,7 @@
 	    foreach($allrows as $row){
             $start_time = $row['start_time'];
             $end_time = $row['end_time'];
-            if( (strtotime($start_time)<strtotime($today_date)) && (strtotime($today_date)<strtotime($end_time)) ){
+            if( (strtotime($start_time)<=strtotime($today_date)) && (strtotime($today_date)<=strtotime($end_time)) ){
             	$results[] = $row; //加入到当天的事件列表
             }
         }
