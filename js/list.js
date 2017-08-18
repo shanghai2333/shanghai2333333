@@ -125,7 +125,7 @@ function change_model(today,activity_id,activity_title,activity_spot,activity_in
     model.find(".event-modal-detail").html("活动详情："+activity_info);
     model.find(".event-modal-moral").html("德育分值："+moral_score);
     model.find(".event-modal-hold").html("主办单位："+hold_department);
-    model.find(".event-finished").attr("onclick","finish_state('"+activity_id+"')");
+    model.find(".event-finished").attr("onclick","finish_state('"+activity_id+"','"+moral_score+"')");
     if(state == "已完成"){
         model.find(".event-finished").attr("class","event-finished hide");
     }
@@ -134,7 +134,7 @@ function change_model(today,activity_id,activity_title,activity_spot,activity_in
     }
 }
 
-function finish_state(this_id){
+function finish_state(this_id,moral_score){
     $.ajax({
         type: 'POST',
         url: 'API/change_state.php',
@@ -150,7 +150,24 @@ function finish_state(this_id){
                 alert("error");
             }
         },
+    });
+
+    $.ajax({
+        type: 'POST',
+        url: 'API/add_moral.php',
+        dataType: 'json',
+        data: {
+            moral_score: moral_score,
+        },
+        success:function (data){
+            var moralnow = data.result;
+    // ------------------------------------------
+    //   //修改当前德育分
+    // ------------------------------------------
+            alert(moralnow);  
+        },
     })
+
 }
 
 function delete233(activity_id){
