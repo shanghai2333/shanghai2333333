@@ -7,7 +7,7 @@
     if(!isset($_SESSION['token'])||!isset($_SESSION['usrid'])||!isset($_SESSION['name'])){
         exit('illegal access!');
     }else{
-        $username = $_SESSION['name'];
+        $username = $_SESSION['usrid'];
     }
 
 
