@@ -15,33 +15,35 @@
 			<div class="navbar-info">
 				<div class="nav-search-line left">
 					<span class="icon-search"></span>
-					<input type="text" name="search-content" class="nav-search-content" placeholder="请输入你关注的活动">
+					<form action="search.php" method="get">
+						<input type="search" name="user-search" placeholder="请输入你关注的活动" />
+					</form>
 				</div>
 				<div class="nav-search-cls right" id="close">
 					<span class="icon-cross"></span>
 				</div>
 			</div>
 		</nav>
-		<section class="mainbar">
+		<section class="sidebar">
 			<ul class="main-classify">
 				<li class="main-classify-part selected" id="main-school">
-					<div class="main-line">
+					<div class="main-line hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-yiban">易班</span>震惊！易班程序员竟齐聚风味餐厅</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-yiban.jpg"></div>
 					</div>
 
-					<div class="main-line">
+					<div class="main-line hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-school">校会</span>震惊！校园歌手大赛竟定于愚人节召开</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-school.jpg"></div>
@@ -54,7 +56,7 @@
 							<div class="main-line-title"><span class="main-line-collg" id="collg-scs">计算机</span>计算机学院第23届秋之韵强势来袭！</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-scs.jpg"></div>
@@ -66,7 +68,7 @@
 							<div class="main-line-title"><span class="main-line-collg" id="collg-scss">网安</span>震惊！三笙有幸竟于网安网红诞辰举行！</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-meow.jpg"></div>
@@ -91,23 +93,23 @@
 		<section class="mainbar">
 			<ul class="main-classify">
 				<li class="main-classify-part selected" id="main-school">
-					<div class="main-line">
+					<div class="main-line  yiban-template hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-yiban">易班</span>震惊！易班程序员竟齐聚风味餐厅</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-yiban.jpg"></div>
 					</div>
 
-					<div class="main-line">
+					<div class="main-line school-template hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-school">校会</span>震惊！校园歌手大赛竟定于愚人节召开</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-school.jpg"></div>
@@ -115,24 +117,24 @@
 
 				</li>
 				<li class="main-classify-part" id="main-incolg">
-					<div class="main-line">
+					<div class="main-line incolg-template hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-scs">计算机</span>计算机学院第23届秋之韵强势来袭！</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-scs.jpg"></div>
 					</div>
 				</li>
 				<li class="main-classify-part" id="main-nocolg">
-					<div class="main-line">
+					<div class="main-line nocolg-template hide">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-scss">网安</span>震惊！三笙有幸竟于网安网红诞辰举行！</div>
 							<div class="main-line-detail">
 								<div class="main-line-date"><span class="main-line-start-date">3月23日</span>-<span class="main-line-end-date">4月23日</span></div>
-								<div class="main-line-num"><span id="join-num">233</span>人已参加</div>
+								<div class="main-line-num"><span id="join-num">233</span>人已关注</div>
 							</div>
 						</div>
 						<div class="main-line-img"><img height="100%" src="image/collg-meow.jpg"></div>
@@ -163,5 +165,8 @@
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/materialize.min.js"></script>
 	<script type="text/javascript" src="js/common.js"></script>
+
+	<script src="js/initactivities.js"></script>
+
 </body>
 </html>

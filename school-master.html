@@ -1,0 +1,131 @@
+<title>校组织活动管理员</title>
+<head>
+<meta charset="utf-8">
+
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<link rel="stylesheet" href="css/materialize.min.css">
+
+</head>
+<form action="school_handler.php" method="post" id="school-activity-info">
+<div>活动名字</div>
+<input type="text" name="activity-name" class="activity-name">
+<div>起始时间</div>
+<input type="text" name="start-time" class="start-time">
+<div>结束时间</div>
+<input type="text" name="end-time" class="end-time">
+<!--
+请麻烦孙总事后改为一个漂亮的日期时间选择控件之类的><
+-->
+<div>活动细节</div>
+<input type="text" name="activity-detail" class="activity-detail">
+<div>活动图片至少上传一张低于三张</div>
+<div>活动地点（如不涉及活动地点的活动此项可置为空）</div>
+<input type="text" name="activity-spot" class="activity-spot">
+<br>
+<div>是否有德育分:</div>
+<input type="radio" name="moral-score-check" value="no" id="no-ms" onclick="hidemsitems()" checked> <label for="no-ms">No</label><br>
+<input type="radio" name="moral-score-check" value="yes" id="yes-ms" onclick="showmsitems()"><label for="yes-ms"> Yes</label><br>
+<div class="set-socre hide">设置德育分的值：<input type="text" name="moral-score" id="moral-score" class="hide"></div>
+<!--
+请麻烦孙总事后改为一个漂亮的从0.1到2的选择的一个控件之类的><
+-->
+<div>是否需要收集报名学生信息：</div>
+<input type="radio" name="info-collect-check" value="no" id="no-info" onclick="hideinfoitems()" checked> <label for="no-info">No</label><br>
+<input type="radio" name="info-collect-check" value="yes" id="yes-info" onclick="showinfoitems()"><label for="yes-info"> Yes</label><br>
+<div id="info-collect" class="hide">
+<div>请选择具体需要收集的信息的项目</div>
+<div class="switch signup-name">
+<label>
+姓名 
+  <input name="signup-name" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+ <div class="switch signup-collg">
+<label>
+学院 
+  <input name="signup-collg" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-sex">
+<label>
+性别 
+  <input name="signup-sex" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-id">
+<label>
+ 学号   <input name="signup-id" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-phone">
+<label>
+ 手机   <input name="signup-phone" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-qq">
+<label>
+ qq   <input name="signup-qq" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+
+</div>
+   <div class="switch signup-email">
+<label>
+ 邮箱   <input name="signup-email" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+
+</div>
+<div>如果还有其他需要手机的信息请填写所需信息的名称和描述(如果没有不用填写任何内容），用户将以文本形式填写该项信息<!--这里感觉好像描述的怪怪的...你再改改?-->)</div>
+<input type="text" name="othertitle" placeholder="所收集信息名称">
+<input type="text" name="otherdescribe" placeholder="所收集信息描述">
+</div>
+<div>是否为易班活动</div>
+<input type="radio" name="ybactivity-check" value="no" id="no-yb"  checked> <label for="no-yb">No</label><br>
+<input type="radio" name="ybactivity-check" value="yes" id="yes-yb" ><label for="yes-yb"> Yes</label><br>
+</form>
+<button class="submit" onclick="submitform()">提交</button>
+<script>
+	function showmsitems(){
+		$("#moral-score").removeClass("hide")
+    $(".set-socre").removeClass("hide")
+	}
+	function hidemsitems(){
+		$("#moral-score").addClass("hide")
+    $(".set-socre").addClass("hide")
+	}
+	function showinfoitems(){
+		$("#info-collect").removeClass("hide")
+	}
+	function hideinfoitems(){
+		$("#info-collect").addClass("hide")
+	}
+  function submitform(){
+    //验证信息完整性
+    console.log()
+    if($(".activity-name").val() && $(".start-time").val() && $(".end-time").val() && $(".activity-detail").val()){
+      if($(".start-time").val() < $(".end-time").val()){
+        if($("input[name='moral-score-check']:checked").val()==="yes"){
+          if($("#moral-score").val()>0.1 && $("#moral-score").val()<1.5){
+            
+          }
+          else{
+            console.log("请正确设置德育分值")
+          }
+        }
+      }else{
+        console.log("请正确设置活动开始和结束时间")
+      }
+    }
+    else{
+      console.log("请完善信息")
+    }
+    $("#school-activity-info").submit()
+  }
+</script>

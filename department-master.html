@@ -1,0 +1,175 @@
+<title>院组织活动管理员</title>
+<head>
+<meta charset="utf-8">
+
+<script src="js/jquery-3.2.0.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<link rel="stylesheet" href="css/materialize.min.css">
+
+</head>
+<form action="department_handler.php" method="post" id="collg-activity-info">
+<div>活动名字</div>
+<input type="text" name="activity-name" class="activity-name">
+<div>活动所属院系（最多只能添加五个院）</div>
+<input type="text" name="hold-collg-1" class="hold-collg-1">
+<input type="text" name="hold-collg-2" class="hold-collg-2 hide"><a class="btn close-collg2 hide" onclick="hidecollg('hold-collg-2','close-collg2')">close</a>
+<input type="text" name="hold-collg-3" class="hold-collg-3 hide"><a class="btn close-collg3 hide" onclick="hidecollg('hold-collg-3','close-collg3')">close</a>
+<input type="text" name="hold-collg-4" class="hold-collg-4 hide"><a class="btn close-collg4 hide" onclick="hidecollg('hold-collg-4','close-collg4')">close</a>
+<input type="text" name="hold-collg-5" class="hold-collg-5 hide"><a class="btn close-collg5 hide" onclick="hidecollg('hold-collg-5','close-collg5')">close</a>
+<a class="btn addnewcollg" onclick="addnewcollg()">add</a>
+<div>起始时间</div>
+<input type="text" name="start-time" class="start-time">
+<div>结束时间</div>
+<input type="text" name="end-time" class="end-time">
+<!--
+请麻烦孙总事后改为一个漂亮的日期时间选择控件之类的><
+-->
+<div>活动细节</div>
+<input type="text" name="activity-detail" class="activity-detail">
+<div>活动图片至少上传一张低于三张</div>
+<div>活动地点（如不涉及活动地点的活动此项可置为空）</div>
+<input type="text" name="activity-spot" class="activity-spot">
+<br>
+<div>是否有德育分:</div>
+<input type="radio" name="moral-score-check" value="no" id="no-ms" onclick="hidemsitems()" checked> <label for="no-ms">No</label><br>
+<input type="radio" name="moral-score-check" value="yes" id="yes-ms" onclick="showmsitems()"><label for="yes-ms"> Yes</label><br>
+<div class="set-socre hide">设置德育分的值：<input type="text" name="moral-score" id="moral-score" class="hide"></div>
+<!--
+请麻烦孙总事后改为一个漂亮的从0.1到2的选择的一个控件之类的><
+-->
+<div>是否需要收集报名学生信息：</div>
+<input type="radio" name="info-collect-check" value="no" id="no-info" onclick="hideinfoitems()" checked> <label for="no-info">No</label><br>
+<input type="radio" name="info-collect-check" value="yes" id="yes-info" onclick="showinfoitems()"><label for="yes-info"> Yes</label><br>
+<div id="info-collect" class="hide">
+<div>请选择具体需要收集的信息的项目</div>
+<div class="switch signup-name">
+<label>
+姓名 
+  <input name="signup-name" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+ <div class="switch signup-collg">
+<label>
+学院 
+  <input name="signup-collg" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-sex">
+<label>
+性别 
+  <input name="signup-sex" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-id">
+<label>
+ 学号   <input name="signup-id" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-phone">
+<label>
+ 手机   <input name="signup-phone" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+</div>
+  <div class="switch signup-qq">
+<label>
+ qq   <input name="signup-qq" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+
+</div>
+   <div class="switch signup-email">
+<label>
+ 邮箱   <input name="signup-email" type="checkbox" checked>
+  <span class="lever"></span>
+</label>
+
+</div>
+<div>如果还有其他需要手机的信息请填写所需信息的名称和描述(如果没有不用填写任何内容），用户将以文本形式填写该项信息<!--这里感觉好像描述的怪怪的...你再改改?-->)</div>
+<input type="text" name="othertitle" placeholder="所收集信息名称">
+<input type="text" name="otherdescribe" placeholder="所收集信息描述">
+</div>
+<div>是否需要推送到主页希望更多院的人知道</div>
+<input type="radio" name="strong-check" value="no" id="no-strong"  checked> <label for="no-strong">No</label><br>
+<input type="radio" name="strong-check" value="yes" id="yes-strong" ><label for="yes-strong"> Yes</label><br>
+</form>
+<button class="submit" onclick="submitform()">提交</button>
+<script>
+  function showmsitems(){
+    $("#moral-score").removeClass("hide")
+    $(".set-socre").removeClass("hide")
+  }
+  function hidemsitems(){
+    $("#moral-score").addClass("hide")
+    $(".set-socre").addClass("hide")
+  }
+	function showinfoitems(){
+		$("#info-collect").removeClass("hide")
+	}
+	function hideinfoitems(){
+		$("#info-collect").addClass("hide")
+	}
+  function submitform(){
+
+    //验证信息完整性
+    if($(".activity-name").val() && $(".start-time").val() && $(".end-time").val() && $(".activity-detail").val()){
+      if($(".start-time").val() < $(".end-time").val()){
+            //获取所有院名称
+            var allcollgs = "|"
+            allcollgs += $(".hold-collg-1").val().trim()?$(".hold-collg-1").val().trim()+"|":""
+            allcollgs += $(".hold-collg-2").val().trim()?$(".hold-collg-2").val().trim()+"|":""
+            allcollgs += $(".hold-collg-3").val().trim()?$(".hold-collg-3").val().trim()+"|":""
+            allcollgs += $(".hold-collg-4").val().trim()?$(".hold-collg-4").val().trim()+"|":""
+            allcollgs += $(".hold-collg-5").val().trim()?$(".hold-collg-5").val().trim()+"|":""
+            if(allcollgs==="|"){
+              console.log("请正确填写活动所属院系")
+            }else{
+              if($("input[name='moral-score-check']:checked").val()==="yes"){
+                if($("#moral-score").val()>0.1 && $("#moral-score").val()<1.5){
+
+                }
+                else{
+                  console.log("请正确设置德育分值")
+                }
+              }
+            }
+        
+      }else{
+        console.log("请正确设置活动开始和结束时间")
+      }
+    }
+    else{
+      console.log("请完善信息")
+    }
+    $("#collg-activity-info").submit()
+  }
+
+  function addnewcollg(){
+    if($(".hold-collg-2").hasClass("hide")){
+      $(".hold-collg-2").removeClass("hide")
+      $(".close-collg2").removeClass("hide")
+    }else if($(".hold-collg-3").hasClass("hide")){
+      $(".hold-collg-3").removeClass("hide")
+      $(".close-collg3").removeClass("hide")
+    }else if($(".hold-collg-4").hasClass("hide")){
+      $(".hold-collg-4").removeClass("hide")
+      $(".close-collg4").removeClass("hide")
+    }else if($(".hold-collg-5").hasClass("hide")){
+      $(".hold-collg-5").removeClass("hide")
+      $(".close-collg5").removeClass("hide")
+    }else{
+      alert("最多添加五个学院")
+    }
+  }
+
+  function hidecollg(classname1,classname2){
+    $("."+classname1).addClass("hide")
+    $("."+classname1).val("")
+    $("."+classname2).addClass("hide")
+    console.log(this)
+  }
+</script>
