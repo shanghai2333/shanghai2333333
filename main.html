@@ -10,13 +10,13 @@
 </head>
 <body>
 <div id="main-content">
-	<div id="searchbar" class="">
+	<div id="searchbar" class="hide">
 		<nav class="navbar">
 			<div class="navbar-info">
 				<div class="nav-search-line left">
-					<span class="icon-search"></span>
-					<form action="search.php" method="get">
-						<input type="search" name="user-search" placeholder="请输入你关注的活动" />
+					<span class="icon-search nav-search-icon left"></span>
+					<form action="search.php" method="get" class="nav-search-form left">
+						<input type="search" name="user-search" placeholder="请输入你关注的活动" class="nav-search-content" />
 					</form>
 				</div>
 				<div class="nav-search-cls right" id="close">
@@ -77,6 +77,62 @@
 			</ul>
 		</section>
 	</div>
+	<div id="detailbar" class="hide">
+		<nav class="navbar">
+			<div class="navbar-info">
+				<div class="nav-detail nav-detail-cls center">
+					<span class="icon-cross"></span>
+				</div>
+				<div class="nav-detail nav-detail-title center">活动详情</div>
+				<div class="nav-detail nav-detail-collect center">
+					<span class="icon-star-empty"></span>
+				</div>
+			</div>
+		</nav>
+		<section class="main-imgbanner">
+			<img src="image/collg-scs.jpg" width="100%">
+		</section>
+		<section class="contentbar">
+			<div class="main-title">
+				<div class="main-title-icon left">
+					<span class="icon-office"></span>
+				</div>
+				<div class="main-title-desc">秋之韵</div>
+			</div>
+			<div class="main-content">
+				<div class="main-content-sub">
+					<div class="sub-content sub-content-detail">
+						<p>举办地点：<span id="detail-place">风味餐厅</span></p>
+						<p>开始时间：<span id="detail-begin-time">9:00</span></p>
+						<p>结束时间：<span id="detail-end-time">11:00</span></p>
+						<p>是否有德育分：<span id="detail-ifscore">有</span></p>
+						<p>德育分分数：<span id="detail-score">2分</span></p>
+					</div>
+				</div>
+				<div class="separator"></div>
+				<div class="main-content-sub">
+					<div class="sub-title">活动介绍</div>
+					<div class="sub-content">
+						<p>军训，是大学的第一堂课，每一个大学生入学最先经历的事就是军训，军训可以锻练自己的意志和毅力。但军训也是很辛苦的，作为过来人，以下是给大一小朋友们的一些小秘诀，希望大家在广职能有一段愉快的军旅生活。</p>
+					</div>
+					<div class="sub-img">
+						<img src="image/collg-scs.jpg" width="100%">
+					</div>
+				</div>
+				<div class="separator"></div>
+				<div class="main-content-sub main-content-form">
+					<div class="sub-title">活动报名</div>
+					<div class="sub-content">
+						<input type="text" placeholder="姓名">
+						<input type="text" placeholder="学号">
+						<input type="text" placeholder="学院">
+						<input type="text" placeholder="联系方式">
+						<input type="text" placeholder="备注">
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
 	<div id="showbar" class="">
 		<nav class="navbar">
 			<div class="navbar-info">
@@ -93,7 +149,7 @@
 		<section class="mainbar">
 			<ul class="main-classify">
 				<li class="main-classify-part selected" id="main-school">
-					<div class="main-line  yiban-template hide">
+					<div class="main-line  yiban-template">
 						<div class="main-line-desc">
 							<div class="main-line-title"><span class="main-line-collg" id="collg-yiban">易班</span>震惊！易班程序员竟齐聚风味餐厅</div>
 							<div class="main-line-detail">
@@ -140,7 +196,7 @@
 						<div class="main-line-img"><img height="100%" src="image/collg-meow.jpg"></div>
 					</div>
 				</li>
-			</ul>
+				</ul>
 		</section>
 		<nav class="footbar">
 			<ul class="foot-classify">
@@ -159,6 +215,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 </div>
 
 	
